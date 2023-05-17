@@ -6,3 +6,12 @@ applications:
     - nodejs_buildpack
   memory: 256M
   stack: cflinuxfs4
+  processes:
+    - type: web
+      command: node web.js
+      instances: 1
+    - type: worker
+      command: node web2.js
+      health-check-type: process
+      instances: 1
+
